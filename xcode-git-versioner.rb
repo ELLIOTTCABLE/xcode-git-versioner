@@ -8,4 +8,4 @@ sha = `#{git} rev-parse --short HEAD`.chomp
  
 list = NSMutableDictionary.dictionaryWithContentsOfFile plist
 list['CFBundleVersion'] = sha
-list.writeToFile 'Info.plist', :atomically => true
+list.writeToFile plist, :atomically => true
