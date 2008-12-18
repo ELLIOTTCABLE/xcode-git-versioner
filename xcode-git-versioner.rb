@@ -2,6 +2,7 @@
 raise "Must be run from Xcode" unless ENV['XCODE_VERSION_ACTUAL']
 
 plist = File.join ENV['BUILT_PRODUCTS_DIR'], ENV['INFOPLIST_PATH']
+raise "Info.plist missing, or path error" unless File.file? plist
 
 git = `sh /etc/profile; which git`.chomp
 sha = `#{git} rev-parse --short HEAD`.chomp
