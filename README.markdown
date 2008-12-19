@@ -3,6 +3,10 @@ xcode-git-versioner
 This is an Xcode auto-versioning script, written in Ruby which updates your
 `Info.plist`'s `CFBundleVersion` to the latest git revision number.
 
+See [the wiki][wiki-home] for more information.
+
+  [wiki-home]: <http://github.com/elliottcable/xcode-git-versioner/wikis/home> "Xcode git versioner's wiki on GitHub"
+
 Usage
 -----
 1. Right-click the target you want to add the versioning phase to (usually the
