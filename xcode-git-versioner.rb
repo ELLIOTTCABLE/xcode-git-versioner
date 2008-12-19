@@ -8,9 +8,11 @@ raise "Info.plist missing, or path error" unless File.file? plist
 
 git = `sh /etc/profile; which git`.chomp
 tag, age, sha = `#{git} describe --tags --always --long`.chomp.match(/(?:(.*)-(\d+)-)?([0-9a-g]+)/i)[1..3]
+branch = `#{git} name-rev HEAD --name-only --always`.chomp
 
 # "v1.0", "v1.0b2 [g3f22c9f]", "[g3f22c9f]"
 version = tag ? (age.to_i.zero? ? "#{tag}" : "#{tag}b#{age} [#{sha}]") : "[#{sha}]"
+version += " (on #{branch})" if branch and branch != 'master'
 
 list = NSMutableDictionary.dictionaryWithContentsOfFile plist
 list['CFBundleVersion'] = version
