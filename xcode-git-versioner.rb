@@ -1,4 +1,3 @@
-#!/usr/bin/env macruby
 RunOnlyOnRelease = false
 
 raise "Must be run from Xcode" unless ENV['XCODE_VERSION_ACTUAL']
