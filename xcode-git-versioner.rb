@@ -1,3 +1,8 @@
+# per: http://rubycocoa.sourceforge.net/RequireFramework
+require 'osx/cocoa'
+include OSX
+OSX.require_framework 'Foundation'
+
 RunOnlyOnRelease = false
 
 raise "Must be run from Xcode" unless ENV['XCODE_VERSION_ACTUAL']
@@ -16,6 +21,6 @@ version += " (on #{branch})" if branch and branch != 'master'
 
 list = NSMutableDictionary.dictionaryWithContentsOfFile plist
 list['CFBundleVersion'] = version
-list.writeToFile plist, :atomically => true
+list.objc_send(:writeToFile, plist, :atomically, true)
 
 puts "CFBundleVersion set to '#{version}'!"
